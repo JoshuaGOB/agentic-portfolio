@@ -1,0 +1,95 @@
+body {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  color: var(--color-ink);
+  background: var(--color-sand);
+}
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; font-weight: 600; }
+
+.wrap { width: min(100% - 2.5rem, var(--maxw)); margin-inline: auto; }
+
+/* ── Navigation ───────────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--color-sand);
+  border-bottom: 2px solid var(--color-ink);
+}
+.site-nav__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-block: var(--space-s);
+}
+.site-nav__brand {
+  font-family: var(--font-display); font-weight: 600; font-size: var(--step-1);
+  text-decoration: none; letter-spacing: -0.02em;
+}
+.site-nav__brand span { color: var(--color-coral); }
+.site-nav__links { display: flex; gap: var(--space-m); list-style: none; }
+.site-nav__links a {
+  text-decoration: none; font-size: var(--step--1); text-transform: uppercase;
+  letter-spacing: 0.08em; font-weight: 500; padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+.site-nav__links a:hover { border-color: var(--color-teal); }
+.site-nav__links a[aria-current="page"] { border-color: var(--color-coral); }
+
+.nav-toggle { display: none; background: none; border: none; cursor: pointer;
+  font-size: 1.5rem; line-height: 1; }
+
+@media (max-width: 720px) {
+  .nav-toggle { display: block; }
+  .site-nav__links {
+    position: absolute; inset: 100% 0 auto 0;
+    flex-direction: column; gap: var(--space-s);
+    background: var(--color-sand); padding: var(--space-m);
+    border-bottom: 2px solid var(--color-ink);
+    transform: translateY(-130%); transition: transform .3s ease;
+    z-index: -1;
+  }
+  .site-nav__links.open { transform: translateY(0); }
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero { position: relative; overflow: hidden; min-height: 78vh;
+  display: grid; align-items: center; }
+#hero-canvas { position: absolute; inset: 0; z-index: 0; }
+.hero__content { position: relative; z-index: 1; padding-block: var(--space-xl); }
+.hero__kicker {
+  display: inline-block; font-size: var(--step--1); text-transform: uppercase;
+  letter-spacing: 0.18em; background: var(--color-mango); color: var(--color-ink);
+  padding: 0.3em 0.8em; margin-bottom: var(--space-s); font-weight: 600;
+}
+.hero__title { font-size: var(--step-4); letter-spacing: -0.03em; max-width: 14ch; }
+.hero__title em { font-style: normal; color: var(--color-coral); }
+.hero__sub { font-size: var(--step-1); margin-top: var(--space-s); max-width: 32ch;
+  color: var(--color-teal); font-family: var(--font-display); }
+
+/* ── Generic section ──────────────────────────────────────── */
+.section { padding-block: var(--space-xl); }
+.section__head { display: flex; align-items: baseline; gap: var(--space-s);
+  margin-bottom: var(--space-l); }
+.section__index { font-family: var(--font-display); color: var(--color-coral);
+  font-size: var(--step-1); }
+.section__title { font-size: var(--step-3); letter-spacing: -0.02em; }
+
+/* diagonal divider */
+.divider { height: 64px; }
+.accent-canvas { width: 100%; height: 60px; margin-bottom: var(--space-m); }
+
+/* About: asymmetric two-column */
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-l);
+  align-items: start; }
+.about-grid p { font-size: var(--step-1); max-width: 42ch; }
+.about-photo { border: 3px solid var(--color-ink); aspect-ratio: 4/5;
+  object-fit: cover; background: var(--color-teal); }
+.focus-list { display: flex; flex-wrap: wrap; gap: var(--space-xs);
+  margin-top: var(--space-m); }
+@media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* ── Footer ───────────────────────────────────────────────── */
+.site-footer { background: var(--color-ink); color: var(--color-sand);
+  padding-block: var(--space-l); margin-top: var(--space-xl); }
+.site-footer a { color: var(--color-mango); }
+.site-footer__grid { display: flex; flex-wrap: wrap; gap: var(--space-l);
+  justify-content: space-between; align-items: center; }
+#footer-canvas { width: 120px; height: 60px; }
